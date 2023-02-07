@@ -1,0 +1,92 @@
+.Main {
+    margin: 0 auto;
+    max-width: 1280px;
+}
+
+.Main__container-main {
+    padding-right: 70px;
+    display: flex;
+    background-color: #073042;
+    padding-left: 70px;
+    align-items: center;
+    
+  }
+
+.Main__container-main_loggedIn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #073042;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+  
+  @media screen and (max-width: 769px) {
+    .Main__container-main {
+      padding-left: 30px;
+      padding-right: 15px;
+    }
+  }
+  
+  @media screen and (max-width: 596px) {
+    .Main__container-main {
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+  }
+
+  .Main__Techs-blockTitle {
+    margin-left: 70px;
+    margin-right: 70px;
+    border-bottom: 1px solid #dadada;
+    padding-top: 60px;
+  }
+  
+  @media screen and (max-width: 1095px) {
+    .Main__Techs-blockTitle {
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+  }
+  
+  @media screen and (max-width: 595px) {
+    .Main__Techs-blockTitle {
+      margin-left: 14px;
+      margin-right: 14px;
+      padding-top: 35px;
+    }
+  }
+  
+  .Main__Techs-blockTitle-title {
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    font-family: "Inter", "Arial", sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.2;
+    font-style: normal;
+    padding-bottom: 23px;
+  }
+  
+  @media screen and (max-width: 595px) {
+    .Main__Techs-blockTitle-title {
+      font-size: 18px;
+      padding-bottom: 28px;
+    }
+  }
+  
+  .Main__techs-block-title {
+    background-color: #272727;
+    padding-top: 40px;
+  }
+  
+  @media screen and (max-width: 769px) {
+    .Main__techs-block-title {
+      padding-top: 0;
+  }
+  }
+
+  .Navigation__main_hidden {
+    display: none;
+  }

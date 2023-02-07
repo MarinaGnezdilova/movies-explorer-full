@@ -1,0 +1,208 @@
+.Register {
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .Register__header {
+    background-color: #202020;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .Register__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+  }
+  
+  @media screen and (max-width: 650px) {
+    .Register__form {
+      flex-direction: column;
+    }
+  }
+  
+  .Register__title {
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    font-family: "Inter", "Arial", sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.2;
+    font-style: normal;
+    padding-bottom: 38px;
+    padding-top: 35px;
+    padding-right: 160px;
+  }
+  
+  @media screen and (max-width: 650px) {
+    .Register__title {
+      padding-top: 45px;
+      padding-bottom: 80px;
+      padding-right: 0;
+    }
+  }
+  
+  .Register__label-form {
+    color: #8b8b8b;
+    font-family: "Inter", "Arial", sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1.2;
+    font-style: normal;
+    width: 100px;
+  }
+  
+  .Register__input {
+    box-sizing: border-box;
+    background-color: #2f2f2f;
+    width: 396px;
+    height: 46px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-family: "Inter", "Arial", sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.2;
+    font-style: normal;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 10px;
+  }
+  
+  @media screen and (max-width: 650px) {
+    .Register__input {
+      width: 260px;
+      margin-bottom: 20px;
+    }
+  }
+  
+  .Register__button {
+    margin-top: 70px;
+    background-color: #4285f4;
+    width: 396px;
+    height: 45px;
+    border: none;
+    color: #ffffff;
+    font-family: "Inter", "Arial", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    font-style: normal;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  @media screen and (max-width: 650px) {
+    .Register__button {
+      width: 260px;
+      font-size: 12px;
+      margin-top: 120px;
+    }
+  }
+
+  .Register__button:disabled {
+      opacity: .4;
+  }
+  
+  .Register__block-under-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+    z-index: 150;
+  }
+  
+  .Register__text {
+    margin: 0;
+    padding: 0;
+    color: #8b8b8b;
+    font-family: "Inter", "Arial", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    font-style: normal;
+    padding-right: 6px;
+  }
+  
+  @media screen and (max-width: 650px) {
+    .Register__text {
+      font-size: 12px;
+      width: 163px;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .Register__text {
+      width: 163px;
+    }
+  }
+  
+  .Register__text-link-under-button {
+    text-decoration: none;
+    background-color: #202020;
+    border: none;
+    color: #4285f4;
+    font-family: "Inter", "Arial", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    font-style: normal;
+    cursor: pointer;
+  }
+  
+  @media screen and (max-width: 650px) {
+    .Register__text-link-under-button {
+      font-size: 12px;
+    }
+  }
+  
+  .Register__button-top {
+    padding-top: 55px;
+    padding-right: 330px;
+  }
+  
+  @media screen and (max-width: 900px) {
+    .Register__button-top {
+      padding-top: 215px;
+    }
+  }
+  
+  @media screen and (max-width: 650px) {
+    .Register__button-top {
+      padding-top: 40px;
+      padding-right: 0;
+      padding-left: 30px;
+    }
+  }
+  
+  .Register__inputs {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  @media screen and (max-width: 650px) {
+    .Register__inputs {
+      width: 260px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+.Register__error-message_active {
+    color: #EE3465;;
+    font-family: "Inter", "Arial", sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 1.2;
+    font-style: normal;
+    text-align: center;
+}
+
+.Register__error-message {
+  display: none;
+}
+  
