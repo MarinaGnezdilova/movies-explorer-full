@@ -109,7 +109,8 @@ function App() {
   );
 
   React.useEffect(() => {
-    if (loggedIn) {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
       setIsLoading(true);
       getSavedfilms();
     }
@@ -266,7 +267,7 @@ function App() {
   //удаление фильма из сохраненных
   function hadleDeleteMovie(movie) {
     mainApi
-      .deleteMovie(movie.id)
+      .deleteMovie(movie._id)
       .then(() => {
         getSavedfilms();
       })
@@ -276,6 +277,24 @@ function App() {
         );
       });
   }
+
+//удаление фильма из сохраненных на главной
+function hadleDeleteMovieOnMain(movie) {
+  const savedFilms = JSON.parse(localStorage.getItem("savedMovies"));
+  const filtered = savedFilms.filter((el) => {
+    return el.id == movie.id;
+  });
+  mainApi
+    .deleteMovie(filtered[0]._id)
+    .then(() => {
+      getSavedfilms();
+    })
+    .catch((e) => {
+      alert(
+        "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+      );
+    });
+}
 
   //вызывается при смене положения чекбокса короткометрижки
   function handleActiveCheckbox() {
@@ -313,7 +332,7 @@ function App() {
               element={
                 <Movies
                   onCardSave={handleSaveMovie}
-                  onCardDelete={hadleDeleteMovie}
+                  onCardDelete={hadleDeleteMovieOnMain}
                   onActiveCheckbox={handleActiveCheckbox}
                   exact
                 />
