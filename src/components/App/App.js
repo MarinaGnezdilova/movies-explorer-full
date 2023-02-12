@@ -13,6 +13,7 @@ import * as yup from "yup";
 import { Link } from "react-router-dom";
 import PrivateRoute from "../../utils/PrivateRoute";
 import NotFound from "../NotFound/NotFound";
+import PrivateRouteIfLogIn from "../../utils/PrivateRouteIfLogIn";
 
 function App() {
   const regexName = /^[a-zа-я\ \-]+$/gi;
@@ -27,6 +28,7 @@ function App() {
   const [isRegisterUnsuccessful, setIsRegisterUnsuccessful] =
     React.useState(false);
   const [isCheckboxActive, setIsCheckboxActive] = React.useState(false);
+  const [isCheckboxActiveSavedMovies, setIsCheckboxActiveSavedMovies] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
   const [isResultSearchNull, setIsResultSearchNull] = React.useState(true);
 
@@ -82,21 +84,26 @@ function App() {
 
   const getSavedfilms = useCallback(
     () =>
+   
       mainApi
         .getMovies()
         .then((res) => {
+          console.log("here");
           const user = JSON.parse(localStorage.getItem("currentUser"));
           const filtred = res.data.filter((el) => {
             return el.owner === user.data._id;
           });
+          console.log(filtred);
           localStorage.setItem("savedMovies", JSON.stringify(filtred));
-          const statusCheckbox = JSON.parse(localStorage.getItem("checkbox"));
+          const statusCheckbox = JSON.parse(localStorage.getItem("checkboxSavedMovies"));
           const filteredShortMovie = filtred.filter((el) => {
             return el.duration <= 40;
           });
           if (!statusCheckbox) {
+            console.log("1111");
             setInitialSavedMovies(filtred);
           } else {
+            console.log("2222");
             setInitialSavedMovies(filteredShortMovie);
           }
         })
@@ -108,9 +115,21 @@ function App() {
     []
   );
 
+  /*React.useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
+
+    if (jwt) {
+      console.log("понялся loggedIn");
+      setIsLoading(true);
+      getSavedfilms();
+    }
+  }, [loggedIn]);*/
+
   React.useEffect(() => {
     const jwt = localStorage.getItem("jwt");
+    console.log(jwt);
     if (jwt) {
+      console.log(444);
       setIsLoading(true);
       getSavedfilms();
     }
@@ -128,7 +147,10 @@ function App() {
   //вызывается при валидной форме авторизации
   function onLoginCompleted() {
     navigate("/movies");
+    console.log("onLoginCompleted");
     setLoggedIn(true);
+    setIsLoading(true);
+    getSavedfilms();
   }
 
   React.useEffect(() => {
@@ -169,7 +191,7 @@ function App() {
         const filteredShortMovie = filtered.filter((el) => {
           return el.duration <= 40;
         });
-        const statusCheckbox = JSON.parse(localStorage.getItem("checkbox"));
+        const statusCheckbox = JSON.parse(localStorage.getItem("checkboxSavedMovies"));
         if (!statusCheckbox) {
           setInitialSavedMovies(filtered);
         } else {
@@ -180,7 +202,7 @@ function App() {
         }
       }
     setIsLoading(true);
-  }, [searchValueSavedFilm, isCheckboxActive]);
+  }, [searchValueSavedFilm, isCheckboxActiveSavedMovies]);
 
   const auth = (jwt) => {
     return mainApi
@@ -197,6 +219,7 @@ function App() {
 
   React.useEffect(() => {
     const jwt = localStorage.getItem("jwt");
+    console.log('3333');
     if (jwt) {
       auth(jwt);
     }
@@ -305,6 +328,14 @@ function hadleDeleteMovieOnMain(movie) {
     }
   }
 
+  function handleActiveCheckboxSavedMovies() {
+    if (isCheckboxActiveSavedMovies) {
+      setIsCheckboxActiveSavedMovies(false);
+    } else {
+      setIsCheckboxActiveSavedMovies(true);
+    }
+  }
+
   return (
     <CurrentUserContext.Provider
       value={{
@@ -314,10 +345,12 @@ function hadleDeleteMovieOnMain(movie) {
         loggedIn,
         setSearchValue,
         filteredMovies,
+        setFilteredMovies,
         initialSavedMovies,
         setSearchValueSavedFilm,
         setInitialSavedMovies,
         isCheckboxActive,
+        isCheckboxActiveSavedMovies,
         isLoading,
         setIsLoading,
         isResultSearchNull,
@@ -343,13 +376,13 @@ function hadleDeleteMovieOnMain(movie) {
               element={
                 <SavedMovies
                   onDeleteMovie={hadleDeleteMovie}
-                  onActiveCheckbox={handleActiveCheckbox}
+                  onActiveCheckbox={handleActiveCheckboxSavedMovies}
                 />
               }
             />
             <Route exact path="/profile" element={<Profile />}></Route>
           </Route>
-          <Route exact path="/" element={<Main />} />
+          <Route element={<PrivateRouteIfLogIn/>}>
           <Route
             path="/signup"
             element={
@@ -476,7 +509,7 @@ function hadleDeleteMovieOnMain(movie) {
               </div>
             }
           ></Route>
-          <Route
+        <Route
             path="/signin"
             element={
               <div>
@@ -580,7 +613,8 @@ function hadleDeleteMovieOnMain(movie) {
               </div>
             }
           ></Route>
-
+          </Route>
+          <Route exact path="/" element={<Main />} />
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </page>

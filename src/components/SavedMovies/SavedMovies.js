@@ -7,7 +7,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import Preloader from "../Preloader/Preloader";
 import Footer from "../Footer/Footer";
 import SavedMoviesCardList from "../SavedMoviesCardList/SavedMoviesCardList";
-import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
+import FilterCheckboxSavedMovies from "../FilterCheckBoxSavedMovies/FilterCheckboxSavedMovies";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import SearchFormSavedFilm from "../SeachFormSavedFilm/SearchFormSavedFilm";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -18,18 +18,23 @@ function SavedMovies(props) {
   const { isLoading } = React.useContext(CurrentUserContext);
   const [renderMovies, setRenderMovies] = useState([]);
   const user = JSON.parse(localStorage.getItem("currentUser"));
-  const { isCheckboxActive } = React.useContext(CurrentUserContext);
+  const { isCheckboxActiveSavedMovies } = React.useContext(CurrentUserContext);
   
   setIsLoading(false);
 
   React.useEffect(() => {
     setRenderMovies(initialSavedMovies);
-  }, [initialSavedMovies,isCheckboxActive])
+  }, [initialSavedMovies, isCheckboxActiveSavedMovies])
 
   React.useEffect(() => {
     const savedFilms =  JSON.parse(localStorage.getItem("savedMovies"));
     savedFilms && setRenderMovies(savedFilms);
   }, [])
+
+  React.useEffect(() => {
+    const savedFilms =  JSON.parse(localStorage.getItem("savedMovies"));
+    savedFilms && setRenderMovies(savedFilms);
+  }, [initialSavedMovies])
 
   function onDeleteMovie(movie) {
   props.onDeleteMovie(movie);
@@ -113,7 +118,7 @@ function onActiveCheckbox () {
         />
       </header>
       <SearchFormSavedFilm />
-      <FilterCheckbox 
+      <FilterCheckboxSavedMovies 
       onActiveCheckbox={onActiveCheckbox}
             />
       <Preloader />

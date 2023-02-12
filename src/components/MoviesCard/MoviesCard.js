@@ -7,9 +7,10 @@ function MoviesCard(props) {
   const [isMoviesSaved, setIsMoviesSaved] = React.useState(false);
   const [isMovieDelete, setIsMovieDelete] = React.useState(false);
   const [isMovieSavedInDB, setIsMovieSavedInDB] = React.useState(false);
-  const statusCheckbox =  JSON.parse(localStorage.getItem("checkbox"));
+  const statusCheckbox =  JSON.parse(localStorage.getItem("checkboxSavedMovies"));
   const isOwn = props.id === props.movie.owner;
   const { initialSavedMovies } = React.useContext(CurrentUserContext);
+  /*const { isCheckboxActiveSavedMovies } = React.useContext(CurrentUserContext);*/
   const [isShortMovieActive, setIsShortMovieActive] = React.useState(false);
   const hours = () => { 
     if (props.duration >= 60) {
@@ -51,11 +52,24 @@ React.useEffect(() => {
   }
 }, [])
 
+/*React.useEffect(() => {
+  if(statusCheckbox === true) {
+    if(props.movie.duration <= 40) {
+      setIsShortMovieActive(false);
+    } else {
+      setIsShortMovieActive(true);
+    }
+  } else {
+    setIsShortMovieActive(false);
+  }
+}, [isCheckboxActiveSavedMovies])*/
+
 React.useEffect(() => {
-  if(!initialSavedMovies) {
+  const initialMovies = JSON.parse(localStorage.getItem("savedMovies"));
+  if(!initialMovies) {
     setIsMovieSavedInDB(false);
   } else {
-    if(!initialSavedMovies.find((item) => item.id == props.movie.id) === false) {
+    if(!initialMovies.find((item) => item.id == props.movie.id) === false) {
       setIsMovieSavedInDB(true);
     } else { 
       setIsMovieSavedInDB(false);
@@ -84,18 +98,22 @@ React.useEffect(() => {
     setIsMoviesSaved(false);
     setIsMovieDelete(true);
   }
-
   return (
     <div
       className={`${
         isMovieDelete || !isOwn || isShortMovieActive ? "MoviesCard_delete" : "MoviesCard"
       }`}
+      
+      
     >
+      <a href={`${props.movie.trailerLink}`} target="_blank" rel="noreferrer">
       <img
         src={props.imageLink}
         alt="Баннер фильма"
         className="MoviesCard__card-image"
-      />
+          />
+      </a>
+        
       <button
         className={`${
           isMovieSavedInDB
@@ -108,11 +126,13 @@ React.useEffect(() => {
         } ${props.classNameHideButtonSaved}`}
         onClick={handleDeleteClick}
       >
+        
         <img
           src={iconSavedFilm}
           alt="Иконка сохраненного фильма"
           className="MoviesCard__button-image"
         />
+        
       </button>
       <button
         className={` ${

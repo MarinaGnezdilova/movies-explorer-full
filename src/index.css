@@ -23,4 +23,5 @@
 @import url(../src/components/Register/Register.css);
 @import url(../src/components/SavedMovies/SavedMovies.css);
 @import url(../src/components/SeachFormSavedFilm/SearchFormSavedFilm.css);
+@import url(../src/components/FilterCheckBoxSavedMovies/FilterCheckboxSavedMovies.css);
 

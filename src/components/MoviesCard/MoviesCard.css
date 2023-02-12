@@ -2,12 +2,14 @@
   display: flex;
   position: relative;
   flex-direction: column;
+  z-index: 1;
 }
 
 .MoviesCard__card-image {
   width: 350px;
   height: 201px;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1279px) {
@@ -36,6 +38,7 @@
   bottom: 200px;
   border: none;
   cursor: pointer;
+  z-index: 2;
 }
 
 @media screen and (max-width: 1279px) {
@@ -78,6 +81,7 @@
   left: 260px;
   bottom: 200px;
   cursor: pointer;
+  z-index: 2;
 }
 
 @media screen and (max-width: 1279px) {
@@ -147,6 +151,7 @@
   position: absolute;
   left: 315px;
   bottom: 200px;
+  z-index: 2;
 }
 
 @media screen and (max-width: 1279px) {

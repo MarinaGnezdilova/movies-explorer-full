@@ -1,11 +1,12 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-function PrivateRoute() {
+function PrivateRouteIfLogIn() {
     const jwt = localStorage.getItem("jwt");
+
     return (
-        !jwt ? <Navigate to="/" /> : <Outlet />
+        !jwt ? <Outlet /> : <Navigate to="/" /> 
 
     )
 }
 
-export default PrivateRoute;
+export default PrivateRouteIfLogIn;

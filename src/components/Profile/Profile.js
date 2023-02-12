@@ -12,12 +12,18 @@ import * as yup from "yup";
 function Profile(props) {
   const regexName = /^[a-zа-я\ \-]+$/gi; 
 
-  const {currentUser} = React.useContext(CurrentUserContext);
+  /*const {currentUser} = React.useContext(CurrentUserContext);*/
   const {setLoggedIn} = React.useContext(CurrentUserContext);
   const {setCurrentUser} = React.useContext(CurrentUserContext);
+  const {setSearchValue} = React.useContext(CurrentUserContext);
+  const {setFilteredMovies} = React.useContext(CurrentUserContext);
+
+  
   const [ isEditProfileSuccess, setIsEditProfileSuccess] = useState('');
   const [ isEditProfileUnsuccess, setIsEditProfileUnsuccess] = useState('');
   const navigate = useNavigate();
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  
 
 function signOut() {
   localStorage.removeItem("jwt");
@@ -27,24 +33,35 @@ function signOut() {
   localStorage.removeItem("movies");
   localStorage.removeItem("querySaved");
   localStorage.removeItem("checkbox");
+  localStorage.removeItem("checkboxSavedMovies");
   navigate("/");
   setLoggedIn(false);
+  setCurrentUser({});
+  setSearchValue("");
+  setFilteredMovies({});
+
+
 }
- 
+
 const validationsSchemaProfile = yup.object().shape({
   email: yup
     .string()
-    .email("Поле должно быть email")
-    .notOneOf([currentUser.data.email], "Новая и старая почта не должны совпадать")
-    ,
+    .email("Поле должно быть email"),
   name: yup.string()
     .matches(regexName, "Используйте только русские или латинские буквы, пробел или тире")
     .notOneOf([currentUser.data.name], "Новое и старое имя не должны совпадать")
+    .when('email', (email)=> {  
+      if (email) {
+        return yup.string().matches(regexName, "Используйте только русские или латинские буквы, пробел или тире")
+      }
+    })
 });
+
 
 React.useEffect(() => {
   setIsEditProfileSuccess('');
   setIsEditProfileUnsuccess('');
+
 }, [])
 
   return (
@@ -123,12 +140,11 @@ React.useEffect(() => {
         <h2 className="Profile__title">Привет, {currentUser.data.name}!</h2>
         <Formik
         initialValues={{
-                  name: "",
-                  email: ""
+                  name: currentUser.data.name,
+                  email: currentUser.data.email 
                 }}
                  validateOnBlur
                  onSubmit = {(values) => {
-                  /*const { name, email } = values;*/
                   const name = values.name?values.name:currentUser.data.name;
                   const email = values.email?values.email:currentUser.data.email;
                   mainApi.editUserInfo( name, email)
@@ -158,7 +174,6 @@ React.useEffect(() => {
                       <label className="Profile__label-input">Имя</label>
                       <input 
                       className="Profile__input-name"
-                      placeholder={currentUser.data.name}
                       value={values.name}
                       name={`name`}
                       onChange={handleChange}
@@ -176,7 +191,6 @@ React.useEffect(() => {
                       <label className="Profile__label-input">E-mail</label>
                       <input 
                       className="Profile__input-email"
-                      placeholder={currentUser.data.email}
                       value={values.email}
                       name={`email`}
                       onChange={handleChange}
@@ -198,9 +212,7 @@ React.useEffect(() => {
                         >Редактировать</button>
                        <button className="Profile__button Profile__button-exit" onClick={signOut}>Выйти из аккаунта</button>      
                        </>          
-
                   )
-
                   }
         </Formik>
         </form>
