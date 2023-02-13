@@ -17,7 +17,8 @@ function Profile(props) {
   const {setCurrentUser} = React.useContext(CurrentUserContext);
   const {setSearchValue} = React.useContext(CurrentUserContext);
   const {setFilteredMovies} = React.useContext(CurrentUserContext);
-
+  const {setInitialSavedMovie} = React.useContext(CurrentUserContext);
+  const { initialSavedMovies } = React.useContext(CurrentUserContext);
   
   const [ isEditProfileSuccess, setIsEditProfileSuccess] = useState('');
   const [ isEditProfileUnsuccess, setIsEditProfileUnsuccess] = useState('');
@@ -26,6 +27,7 @@ function Profile(props) {
   
 
 function signOut() {
+  localStorage.removeItem("currentUser");
   localStorage.removeItem("jwt");
   localStorage.removeItem("query");
   localStorage.removeItem("savedMovies");
@@ -39,8 +41,7 @@ function signOut() {
   setCurrentUser({});
   setSearchValue("");
   setFilteredMovies({});
-
-
+  /*setInitialSavedMovie({});*/
 }
 
 const validationsSchemaProfile = yup.object().shape({

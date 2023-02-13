@@ -3,12 +3,12 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function FilterCheckboxSavedMovies(props) {
 const [isActiveCheckbox, setIsActiveCheckbox ] = useState(false);
-const { isResultSearchNull } = React.useContext(CurrentUserContext);
+const { isResultSearchNullSM } = React.useContext(CurrentUserContext);
 
 React.useEffect(() => {
     const statusCheckbox = JSON.parse(localStorage.getItem("checkboxSavedMovies"));
     setIsActiveCheckbox(statusCheckbox);
-}, [isActiveCheckbox,  isResultSearchNull ])
+}, [isActiveCheckbox/*, isResultSearchNullSM*/])
 
     function handleClick() {
         if(isActiveCheckbox) {
@@ -30,7 +30,7 @@ React.useEffect(() => {
         </button>
         <span className="FilterCheckboxSavedMovies__toggle-text">Короткометражки</span>
         </div>
-        <span className={`${isResultSearchNull ? "preloader__error" : "preloader__error_hide"}`}>Ничего не найдено</span>
+        <span className={`${isResultSearchNullSM ? "preloader__error" : "preloader__error_hide"}`}>Ничего не найдено</span>
     </div>
     
     </>

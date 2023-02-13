@@ -5,7 +5,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 function SearchFormSavedFilm(props) {
   const { setSearchValueSavedFilm } = React.useContext(CurrentUserContext);
   const { setInitialSavedMovies } = React.useContext(CurrentUserContext);
-  const { setIsResultSearchNull } = React.useContext(CurrentUserContext);
+  const { setIsResultSearchNullSM } = React.useContext(CurrentUserContext);
   
   
   const [value, setValue] = React.useState("");
@@ -21,7 +21,8 @@ function SearchFormSavedFilm(props) {
       setIsValueValid(false);
       const initiaMovies = JSON.parse(localStorage.getItem("savedMovies"));
       setInitialSavedMovies(initiaMovies);
-      setIsResultSearchNull(false);
+      setIsResultSearchNullSM(false);
+      setSearchValueSavedFilm("");
     } else {
       setSearchValueSavedFilm(value);
       localStorage.setItem("querySaved", JSON.stringify(value));
@@ -30,8 +31,8 @@ function SearchFormSavedFilm(props) {
   }
 
   React.useEffect(() => {
-    const query = JSON.parse(localStorage.getItem("querySaved"));
-    /*setValue(query);*/
+   setIsResultSearchNullSM(false);
+   setSearchValueSavedFilm("");
   }, []);
 
   return (

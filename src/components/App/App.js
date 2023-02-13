@@ -31,6 +31,7 @@ function App() {
   const [isCheckboxActiveSavedMovies, setIsCheckboxActiveSavedMovies] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
   const [isResultSearchNull, setIsResultSearchNull] = React.useState(true);
+  const [isResultSearchNullSM, setIsResultSearchNullSM] = React.useState(true);
 
   const navigate = useNavigate();
 
@@ -52,7 +53,7 @@ function App() {
         })
         .catch((e) => {
           alert(
-            "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+            "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз1"
           );
         }),
     []
@@ -84,54 +85,71 @@ function App() {
 
   const getSavedfilms = useCallback(
     () =>
-   
       mainApi
         .getMovies()
         .then((res) => {
-          console.log("here");
           const user = JSON.parse(localStorage.getItem("currentUser"));
-          const filtred = res.data.filter((el) => {
-            return el.owner === user.data._id;
-          });
-          console.log(filtred);
-          localStorage.setItem("savedMovies", JSON.stringify(filtred));
+          if(!currentUser) {
+            const filtred = res.data.filter((el) => {
+              return el.owner === /*user.data._id*/ currentUser.data._id;
+            });
+            localStorage.setItem("savedMovies", JSON.stringify(filtred));
           const statusCheckbox = JSON.parse(localStorage.getItem("checkboxSavedMovies"));
           const filteredShortMovie = filtred.filter((el) => {
             return el.duration <= 40;
           });
           if (!statusCheckbox) {
-            console.log("1111");
             setInitialSavedMovies(filtred);
           } else {
-            console.log("2222");
             setInitialSavedMovies(filteredShortMovie);
+          }
+           
+          } else {
+              const filtred = res.data.filter((el) => {
+              return el.owner === user.data._id;
+            });
+            localStorage.setItem("savedMovies", JSON.stringify(filtred));
+          const statusCheckbox = JSON.parse(localStorage.getItem("checkboxSavedMovies"));
+          const filteredShortMovie = filtred.filter((el) => {
+            return el.duration <= 40;
+          });
+          if (!statusCheckbox) {
+            setInitialSavedMovies(filtred);
+          } else {
+            setInitialSavedMovies(filteredShortMovie);
+          }
           }
         })
         .catch((e) => {
           alert(
-            "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+            "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз2"
           );
         }),
     []
   );
 
-  /*React.useEffect(() => {
+  React.useEffect(() => {
     const jwt = localStorage.getItem("jwt");
-
     if (jwt) {
-      console.log("понялся loggedIn");
-      setIsLoading(true);
-      getSavedfilms();
+      mainApi.getUserInfo()
+      .then((res) => {
+        localStorage.setItem("currentUser", JSON.stringify(res));
+      })
+      .then(() => {
+        getSavedfilms();
+      })
+      .catch((e) => {
+        alert( 
+          "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз3"
+        );
+        })
     }
-  }, [loggedIn]);*/
+  }, [loggedIn]);
 
   React.useEffect(() => {
     const jwt = localStorage.getItem("jwt");
-    console.log(jwt);
     if (jwt) {
-      console.log(444);
       setIsLoading(true);
-      getSavedfilms();
     }
   }, []);
 
@@ -147,10 +165,9 @@ function App() {
   //вызывается при валидной форме авторизации
   function onLoginCompleted() {
     navigate("/movies");
-    console.log("onLoginCompleted");
     setLoggedIn(true);
     setIsLoading(true);
-    getSavedfilms();
+    /*getSavedfilms();*/
   }
 
   React.useEffect(() => {
@@ -176,7 +193,7 @@ function App() {
   }, [searchValue, initialMovies, isCheckboxActive]);
 
   React.useEffect(() => {
-    setIsResultSearchNull(false);
+    setIsResultSearchNullSM(false);
     const initiaMovies = JSON.parse(localStorage.getItem("savedMovies"));
     const filtered =
       initiaMovies &&
@@ -198,7 +215,7 @@ function App() {
           setInitialSavedMovies(filteredShortMovie);
         }
         if (filtered.length === 0) {
-          setIsResultSearchNull(true);
+          setIsResultSearchNullSM(true);
         }
       }
     setIsLoading(true);
@@ -209,19 +226,19 @@ function App() {
       .getUserInfo(jwt)
       .then((res) => {
         setLoggedIn(true);
+        localStorage.setItem("currentUser", JSON.stringify(res));
       })
       .catch((e) => {
         alert(
-          "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+          "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз3"
         );
       });
   };
 
   React.useEffect(() => {
     const jwt = localStorage.getItem("jwt");
-    console.log('3333');
-    if (jwt) {
-      auth(jwt);
+       if (jwt) {
+         auth(jwt);
     }
   }, []);
 
@@ -235,7 +252,7 @@ function App() {
         })
         .catch((e) => {
           alert(
-            "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+            "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз4"
           );
         });
     }
@@ -282,7 +299,7 @@ function App() {
       })
       .catch((e) => {
         alert(
-          "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+          "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз5"
         );
       });
   }
@@ -296,7 +313,7 @@ function App() {
       })
       .catch((e) => {
         alert(
-          "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+          "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз6"
         );
       });
   }
@@ -314,7 +331,7 @@ function hadleDeleteMovieOnMain(movie) {
     })
     .catch((e) => {
       alert(
-        "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+        "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз7"
       );
     });
 }
@@ -355,6 +372,8 @@ function hadleDeleteMovieOnMain(movie) {
         setIsLoading,
         isResultSearchNull,
         setIsResultSearchNull,
+        isResultSearchNullSM,
+        setIsResultSearchNullSM,
       }}
     >
       <page className="App">
@@ -525,6 +544,7 @@ function hadleDeleteMovieOnMain(movie) {
                       .then((res) => {
                         const token = res.token;
                         localStorage.setItem("jwt", token);
+                        /*setLoggedIn(true);*/
                       })
                       .then(() => {
                         onLoginCompleted();

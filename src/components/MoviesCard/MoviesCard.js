@@ -8,7 +8,7 @@ function MoviesCard(props) {
   const [isMovieDelete, setIsMovieDelete] = React.useState(false);
   const [isMovieSavedInDB, setIsMovieSavedInDB] = React.useState(false);
   const statusCheckbox =  JSON.parse(localStorage.getItem("checkboxSavedMovies"));
-  const isOwn = props.id === props.movie.owner;
+  /*const isOwn = props.id === props.movie.owner;*/
   const { initialSavedMovies } = React.useContext(CurrentUserContext);
   /*const { isCheckboxActiveSavedMovies } = React.useContext(CurrentUserContext);*/
   const [isShortMovieActive, setIsShortMovieActive] = React.useState(false);
@@ -101,7 +101,7 @@ React.useEffect(() => {
   return (
     <div
       className={`${
-        isMovieDelete || !isOwn || isShortMovieActive ? "MoviesCard_delete" : "MoviesCard"
+        isMovieDelete /*|| /*isOwn ||*isShortMovieActive*/ ? "MoviesCard_delete" : "MoviesCard"
       }`}
       
       

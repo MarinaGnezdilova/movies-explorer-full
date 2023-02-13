@@ -22,23 +22,19 @@ function SavedMovies(props) {
   
   setIsLoading(false);
 
-  /*React.useEffect(() => {
+  React.useEffect(() => {
     setRenderMovies(initialSavedMovies);
-    console.log(666);
-    console.log(initialSavedMovies);
-  }, [initialSavedMovies, isCheckboxActiveSavedMovies])*/
+  }, [initialSavedMovies])
 
   React.useEffect(() => {
     const savedFilms =  JSON.parse(localStorage.getItem("savedMovies"));
     savedFilms && setRenderMovies(savedFilms);
   }, [])
 
-  React.useEffect(() => {
+  /*React.useEffect(() => {
     const savedFilms =  JSON.parse(localStorage.getItem("savedMovies"));
-    console.log(555);
-    console.log(savedFilms);
     savedFilms && setRenderMovies(savedFilms);
-  }, [initialSavedMovies, isCheckboxActiveSavedMovies])
+  }, [/*initialSavedMovies/*, isCheckboxActiveSavedMovies])*/
 
   function onDeleteMovie(movie) {
   props.onDeleteMovie(movie);
