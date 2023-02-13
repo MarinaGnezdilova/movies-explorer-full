@@ -1,0 +1,203 @@
+.FormEnter {
+  width: 100vw;
+  height: 100vh;
+}
+
+.FormEnter__header {
+  background-color: #202020;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.FormEnter__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+@media screen and (max-width: 650px) {
+  .FormEnter__form {
+    flex-direction: column;
+  }
+}
+
+.FormEnter__title {
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.2;
+  font-style: normal;
+  padding-bottom: 35px;
+  padding-top: 35px;
+  padding-right: 225px;
+}
+
+@media screen and (max-width: 650px) {
+  .FormEnter__title {
+    padding-top: 45px;
+    padding-bottom: 80px;
+    padding-right: 0;
+  }
+}
+
+.FormEnter__label-form {
+  color: #8b8b8b;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.2;
+  font-style: normal;
+  width: 100px;
+}
+
+.FormEnter__input {
+  box-sizing: border-box;
+  background-color: #2f2f2f;
+  width: 396px;
+  height: 46px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.2;
+  font-style: normal;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 650px) {
+  .FormEnter__input {
+    width: 260px;
+  }
+}
+
+.FormEnter__button {
+  margin-top: 49px;
+  margin-left: 15px;
+  background-color: #4285f4;
+  width: 396px;
+  height: 45px;
+  border: none;
+  color: #ffffff;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  font-style: normal;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 650px) {
+  .FormEnter__button {
+    width: 260px;
+    font-size: 12px;
+    margin-top: 120px;
+  }
+}
+
+.FormEnter__button:disabled {
+  opacity: .4;
+}
+
+.FormEnter__block-under-button {
+  display: flex;
+  margin-top: 16px;
+  z-index: 150;
+}
+
+.FormEnter__text {
+  margin: 0;
+  padding: 0;
+  color: #8b8b8b;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  font-style: normal;
+  padding-right: 6px;
+}
+
+@media screen and (max-width: 650px) {
+  .FormEnter__text {
+    font-size: 12px;
+    width: 163px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .FormEnter__text {
+    width: 163px;
+  }
+}
+
+.FormEnter__text-link-under-button {
+  text-decoration: none;
+  color: #4285f4;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  font-style: normal;
+}
+
+@media screen and (max-width: 650px) {
+  .FormEnter__text-link-under-button {
+    font-size: 12px;
+  }
+}
+
+.FormEnter__button-top {
+  padding-top: 55px;
+  padding-right: 320px;
+}
+
+@media screen and (max-width: 900px) {
+  .FormEnter__button-top {
+    padding-top: 215px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .FormEnter__button-top {
+    padding-top: 40px;
+    padding-right: 0;
+    padding-left: 30px;
+
+  }
+}
+
+.FormEnter__inputs {
+  display: flex;
+  flex-direction: column;
+  height: 290px;
+  padding-left: 10px;
+}
+
+@media screen and (max-width: 650px) {
+  .FormEnter__inputs {
+    height: 300px;
+    width: 260px;
+  }
+}
+
+.FormEnter__label-error {
+  margin: 0;
+  padding: 0;
+  color:#EE3465 ;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.2;
+  font-style: normal;
+  margin-bottom: 10px;
+}

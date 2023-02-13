@@ -1,0 +1,329 @@
+.Navigation {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .Navigation {
+    padding-top: 12px;
+  }
+}
+
+.Navigation__button-header {
+  display: flex;
+  color: #ffffff;
+  background-color: #202020;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.4;
+  font-style: normal;
+  border: none;
+  cursor: pointer;
+}
+
+.Navigation__account-button-text {
+  padding-top: 3px;
+  padding-right: 7px;
+}
+
+.Navigation__button-circle {
+  box-sizing: border-box;
+  background-color: #313131;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  padding-top: 4px;
+}
+
+.Navigation__buttons-about-films {
+  display: flex;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.4;
+  font-style: normal;
+  cursor: pointer;
+}
+
+.Navigation__button {
+  text-decoration: none;
+  padding-left: 10px;
+}
+
+@media screen and (max-width: 595px) {
+  .Navigation__button  {
+    padding-left: 0px;
+  }
+}
+
+.Navigation__button-register {
+  color: #ffffff;
+  background-color: #073042;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.3;
+  font-style: normal;
+  border: none;
+  padding-right: 30px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 596px) {
+  .Navigation__button-register {
+    padding-right: 14px;
+    font-size: 10px;
+  }
+}
+
+.Navigation__button-enter {
+  background-color: #3ddc84;
+  width: 76px;
+  height: 32px;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  font-style: normal;
+  color: #000000;
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 596px) {
+  .Navigation__button-enter {
+    width: 54px;
+    font-size: 10px;
+  }
+}
+
+.Navigation__main {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: end;
+}
+
+.Navigation__wrapper {
+  display: none;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  color: #202020;
+}
+
+@media screen and (max-width: 768px) {
+  .Navigation__wrapper {
+    display: flex;
+    padding-left: 100%;
+  }
+}
+
+#check-menu {
+  display: none;
+}
+
+.Navigation__label {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 420px;
+  width: 120px;
+  height: 100%;
+  cursor: pointer;
+  z-index: 105;
+  line-height: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .Navigation__label {
+    left: 90%;
+    width: 60px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .Navigation__label {
+    left: 85%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .Navigation__label {
+    left: 80%;
+  }
+}
+
+#check-menu:checked ~ .Navigation__label {
+  left: 92%;
+}
+
+@media screen and (max-width: 700px) {
+  #check-menu:checked ~ .Navigation__label {
+    left: 87%;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  #check-menu:checked ~ .Navigation__label {
+    left: 80%;
+  }
+}
+
+.Navigation__burger-line {
+  position: absolute;
+  top: 11px;
+  right: 8px;
+  width: 28px;
+  height: 3px;
+  z-index: 101;
+  background-color: #fff;
+  transition: 0.2s all;
+}
+
+.Navigation__second {
+  top: 21px;
+}
+
+.Navigation__third {
+  top: 21px;
+}
+
+.Navigation__fourth {
+  top: 31px;
+}
+
+#check-menu:checked ~ .Navigation__first {
+  display: none;
+}
+
+#check-menu:checked ~ .Navigation__fourth {
+  display: none;
+}
+
+#check-menu:checked ~ .Navigation__second {
+  transform: rotate(45deg);
+  right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  #check-menu:checked ~ .Navigation__second {
+    top: 20px;
+  }
+}
+
+#check-menu:checked ~ .Navigation__third {
+  transform: rotate(-45deg);
+  right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  #check-menu:checked ~ .Navigation__third {
+    top: 20px;
+  }
+}
+
+.Navigation__menu {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .Navigation__menu {
+    display: none;
+  }
+  .Navigation__menu1 {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    right: -15px;
+    top: -15px;
+    z-index: 99;
+    width: 520px;
+    flex-direction: column;
+    height: 1024px;
+    background-color: #202020;
+  }
+
+  #check-menu:checked ~ .Navigation__menu1 {
+    display: flex;
+    transition: 1s all;
+  }
+}
+
+@media screen and (max-width: 595px) {
+  .Navigation__menu1  {
+    width: 320px;
+    height: 780px;
+  }
+}
+
+.Navigation__menu-opening-buttons {
+  margin-top: 155px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Navigation__menu-opening-button {
+  box-sizing: border-box;
+  background-color: #202020;
+  border: none;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  font-style: normal;
+  color: #ffffff;
+  cursor: pointer;
+  margin-bottom: 25px;
+  transition: 0.2s all;
+}
+
+@media screen and (max-width: 768px) {
+  .Navigation__menu-opening-button {
+    margin-bottom: 20px;
+  }
+}
+
+.Navigation__menu-opening-button:hover {
+  border-bottom: 2px solid #ffffff;
+}
+
+.Navigation__button-header_opening-menu {
+  margin-bottom: 90px;
+}
+
+@media screen and (max-width: 595px) {
+  .Navigation__button-header_opening-menu  {
+    margin-bottom: 46px;
+  }
+}
+
+.Navigation__link {
+  text-decoration: none;
+}
+
+.Navigation__button-header_opening-menu {
+  padding-bottom: 10px;
+  padding-right: 30px;
+}
+
+.Navigation__button-header_main {
+  background-color: #073042;
+}
+
+.Navigation__button-circle_main {
+  background-color: #4285F4;
+}
+
+.Navigation__buttons-about-films_main {
+}

@@ -1,0 +1,142 @@
+.Promo {
+  background-color: #073042;
+  height: 500px;
+  display: flex;
+  padding-top: 75px;
+  padding-left: 70px;
+  padding-right: 70px;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 1050px) {
+  .Promo {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 845px;
+    padding-top: 0;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .Promo {
+    height: 636px;
+  }
+}
+
+.Promo__block-info {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 1050px) {
+  .Promo__block-info {
+    order: 2;
+    padding-bottom: 65px;
+  }
+}
+
+.Promo__title {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 36px;
+  color: #ffffff;
+  width: 640px;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 1.16;
+  font-style: normal;
+}
+
+@media screen and (max-width: 1050px) {
+  .Promo__title {
+    font-size: 40px;
+    padding-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .Promo__title {
+    width: 310px;
+    font-size: 30px;
+    padding-bottom: 24px;
+    line-height: 1.2;
+  }
+}
+
+.Promo__text {
+  margin: 0;
+  padding: 0;
+  width: 310px;
+  color: #ffffff;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.2;
+  font-style: normal;
+  opacity: 0.5;
+  padding-bottom: 146px;
+}
+
+@media screen and (max-width: 1050px) {
+  .Promo__text {
+    width: 260px;
+    margin-left: 30%;
+    padding-bottom: 90px;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .Promo__text {
+    margin-left: 10%;
+    padding-bottom: 80px;
+  }
+}
+
+.Promo__button {
+  background-color: #073042;
+  color: #ffffff;
+  width: 129px;
+  height: 36px;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  font-style: normal;
+  border-radius: 3px;
+  border: 1px solid rgba(256, 256, 256, 0.6);
+}
+
+@media screen and (max-width: 1050px) {
+  .Promo__button {
+    margin-left: 41%;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .Promo__button {
+    margin-left: 30%;
+  }
+}
+
+.Promo__image {
+  width: 304px;
+  height: 310px;
+}
+
+@media screen and (max-width: 1050px) {
+  .Promo__image {
+    padding-bottom: 50px;
+    padding-top: 160px;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .Promo__image {
+    width: 206px;
+    height: 210px;
+    padding-top: 85px;
+  }
+}

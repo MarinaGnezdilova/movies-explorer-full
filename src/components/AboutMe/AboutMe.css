@@ -1,0 +1,163 @@
+.AboutMe {
+  color: #ffffff;
+  display: flex;
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-top: 66px;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1095px) {
+  .AboutMe {
+    padding-left: 50px;
+    padding-right: 35px;
+    padding-top: 60px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .AboutMe {
+    padding-left: 14px;
+    padding-right: 14px;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.AboutMe__block-text {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+}
+
+@media screen and (max-width: 1095px) {
+  .AboutMe__block-text {
+    width: 364px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .AboutMe__block-text {
+    order: 3;
+    width: 300px;
+  }
+}
+
+.AboutMe__name {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 1.16;
+  font-style: normal;
+  padding-bottom: 18px;
+}
+
+@media screen and (max-width: 1095px) {
+  .AboutMe__name {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 595px) {
+  .AboutMe__name {
+    font-size: 30px;
+    padding-bottom: 28px;
+  }
+}
+
+.AboutMe__shot-about {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.1;
+  font-style: normal;
+  padding-bottom: 26px;
+}
+
+@media screen and (max-width: 1095px) {
+  .AboutMe__shot-about {
+    font-size: 12px;
+    padding-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .AboutMe__shot-about {
+    padding-bottom: 20px;
+  }
+}
+
+.AboutMe__long-about {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.6;
+  font-style: normal;
+  padding-bottom: 99px;
+}
+
+@media screen and (max-width: 1095px) {
+  .AboutMe__long-about {
+    font-size: 12px;
+    padding-bottom: 80px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .AboutMe__long-about {
+    padding-bottom: 40px;
+    width: 285px;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+}
+
+.AboutMe__link {
+  text-decoration: none;
+  color: #ffffff;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  font-style: normal;
+  padding-bottom: 101px;
+}
+
+@media screen and (max-width: 1095px) {
+  .AboutMe__link {
+    padding-bottom: 90px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .AboutMe__link {
+    padding-bottom: 70px;
+  }
+}
+
+.AboutMe__foto {
+  width: 270px;
+  height: 327px;
+}
+
+@media screen and (max-width: 1095px) {
+  .AboutMe__foto {
+    width: 255px;
+    height: 307px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .AboutMe__foto {
+    width: 292px;
+    height: 352px;
+    order: 2;
+    padding-bottom: 40px;
+  }
+}

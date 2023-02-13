@@ -1,0 +1,27 @@
+.Header {
+  padding-right: 26px;
+  padding-top: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 769px) {
+  .Header {
+    padding-right: 38px;
+  }
+}
+
+@media screen and (max-width: 596px) {
+  .Header {
+    padding-right: 14px;
+  }
+}
+
+.Header__button-image {
+  width: 38px;
+  height: 38px;
+}
+
+.Header__account-button {
+  text-decoration: none;
+}
