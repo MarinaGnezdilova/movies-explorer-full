@@ -1,0 +1,124 @@
+.Portfolio {
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+@media screen and (max-width: 1095px) {
+  .Portfolio {
+    padding-left: 50px;
+    padding-right: 35px;
+  }
+}
+
+@media screen and (max-width: 595px) {
+  .Portfolio {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+.Portfolio__list {
+  margin: 0;
+  padding: 0;
+}
+
+.Portfolio__title {
+  margin: 0;
+  padding: 0;
+  color: #8b8b8b;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.1;
+  font-style: normal;
+  padding-bottom: 35px;
+}
+
+@media screen and (max-width: 595px) {
+  .Portfolio__title {
+    padding-bottom: 25px;
+  }
+}
+
+.Portfolio__link {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  color: #ffffff;
+  border-bottom: 1px solid #424242;
+  padding-bottom: 8px;
+  padding-top: 19px;
+}
+
+@media screen and (max-width: 769px) {
+  .Portfolio__link {
+    padding-bottom: 10px;
+  }
+}
+
+.Portfolio__link-text {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.6;
+  font-style: normal;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 1095px) {
+  .Portfolio__link-text {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .Portfolio__link-text {
+    font-size: 18px;
+  }
+}
+
+.Portfolio__link-icon {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 2;
+  font-style: normal;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 1095px) {
+  .Portfolio__link-icon {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .Portfolio__link-icon {
+    font-size: 18px;
+  }
+}
+
+.Portfolio__link:nth-last-child(1) {
+  margin-bottom: 185px;
+  border-bottom: none;
+}
+
+@media screen and (max-width: 1095px) {
+  .Portfolio__link:nth-last-child(1) {
+    margin-bottom: 155px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .Portfolio__link:nth-last-child(1) {
+    margin-bottom: 135px;
+  }
+}
