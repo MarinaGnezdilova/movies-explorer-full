@@ -103,6 +103,6 @@ class Api {
 
 
 export const mainApi = new Api(
-  "https://api.diplom-gnezdilovam.nomoredomains.club"
+  "https://84.252.137.13"
   );
   
