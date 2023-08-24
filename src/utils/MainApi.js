@@ -100,8 +100,6 @@ class Api {
 
 }
 
-
-
 export const mainApi = new Api(
   "https://84.252.137.13"
   );
